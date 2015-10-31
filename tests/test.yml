@@ -1,0 +1,8 @@
+---
+# test file for java
+
+- hosts: localhost
+  remote_user: root
+  roles:
+    - java
+    - confluence
