@@ -35,7 +35,7 @@
   tags: confluence
 
 - name: copy templates
-  templates:
+  template:
     src="{{ item }}.j2"
     dest="/{{ item }}"
     owner={{ confluence_user }}
