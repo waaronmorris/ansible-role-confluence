@@ -1,2 +1,8 @@
 ---
 # defaults file for confluence
+
+confluence_archive: /tmp/atlassian-confluence-5.8.15.tar.gz
+confluence_pass: ahle4Boo
+confluence_sha256: b5d0a672ce98c44aaf400e006e80b9444b909366db2b929125bf6f0a18efbf1d
+confluence_url: https://downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-5.8.15.tar.gz
+confluence_user: confluence
