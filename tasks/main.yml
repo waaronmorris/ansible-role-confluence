@@ -40,7 +40,6 @@
     dest="/{{ item }}"
     owner={{ confluence_user }}
     group={{ confluence_user }}
-    state=file
     mode=0644
   with_items:
     - etc/init.d/confluence
