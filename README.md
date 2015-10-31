@@ -8,7 +8,7 @@ tag](https://img.shields.io/github/tag/pantarei/ansible-role-confluence.svg)](ht
 [![GitHub
 license](https://img.shields.io/github/license/pantarei/ansible-role-confluence.svg)](https://github.com/pantarei/ansible-role-confluence)
 
-Ansible Role for Java Installation.
+Ansible Role for Confluence Installation.
 
 Requirements
 ------------
