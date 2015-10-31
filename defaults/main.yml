@@ -3,6 +3,6 @@
 
 confluence_archive: /tmp/atlassian-confluence-5.8.15.tar.gz
 confluence_pass: ahle4Boo
-confluence_sha256: b5d0a672ce98c44aaf400e006e80b9444b909366db2b929125bf6f0a18efbf1d
+confluence_sha256: d70c55260320276928db997f0f17b3dfe8f119cce01ec39fcbbf4c2978f948c3
 confluence_url: https://downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-5.8.15.tar.gz
 confluence_user: confluence
