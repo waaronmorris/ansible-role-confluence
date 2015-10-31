@@ -1,2 +1,62 @@
 ---
 # tasks file for confluence
+
+- name: create system user
+  user:
+    name={{ confluence_user }}
+    password={{ confluence_pass }}
+    home={{ confluence_home }}
+    system=yes
+    shell=/bin/bash
+  tags: confluence
+
+- name: prepare directory
+  file:
+    path={{ item }}
+    owner={{ confluence_user }}
+    group={{ confluence_user }}
+    state=directory
+    mode=0755
+  with_items:
+    - "{{ confluence_catalina }}"
+  tags: confluence
+
+- name: download package
+  get_url:
+    url={{ confluence_url }}
+    dest={{ confluence_archive }}
+    sha256sum={{ confluence_sha256 }}
+  tags: confluence
+
+- name: unarchive package
+  shell: tar zxvf {{ confluence_archive }} -C {{ confluence_catalina }} --strip-components=1; chown -Rf {{ confluence_user }}:{{ confluence_user }} {{ confluence_catalina }}
+  args:
+    creates: "{{ confluence_catalina }}/bin/start-confluence.sh"
+  tags: confluence
+
+- name: copy templates
+  template:
+    src="{{ item }}.j2"
+    dest="/{{ item }}"
+    owner={{ confluence_user }}
+    group={{ confluence_user }}
+    mode=0644
+  with_items:
+    - etc/init.d/confluence
+    - usr/share/confluence/bin/setenv.sh
+    - usr/share/confluence/conf/server.xml
+  tags: confluence
+
+- name: prepare service script
+  file:
+    path=/etc/init.d/confluence
+    owner=root
+    group=root
+    state=file
+    mode=0755
+  tags: confluence
+
+- name: enable service
+  service: name=confluence enabled=yes
+  notify: restart confluence
+  tags: confluence

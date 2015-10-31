@@ -1,2 +1,5 @@
 ---
 # handlers file for confluence
+
+- name: restart confluence
+  service: name=confluence state=restarted
