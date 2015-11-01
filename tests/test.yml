@@ -1,5 +1,5 @@
 ---
-# test file for java
+# test file for confluence
 
 - hosts: localhost
   remote_user: root
