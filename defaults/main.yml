@@ -8,6 +8,5 @@ confluence_url: https://downloads.atlassian.com/software/confluence/downloads/at
 confluence_pass: ahle4Boo
 confluence_user: confluence
 
-confluence_mode: standalone
-confluence_proxy_name: confluence.example.com
-confluence_proxy_port: 80
+confluence_proxy_name:
+confluence_schema:
