@@ -44,6 +44,16 @@
   with_items:
     - etc/init.d/confluence
     - usr/share/confluence/bin/setenv.sh
+  tags: confluence
+
+- name: copy templates, per confluence_mode
+  template:
+    src="{{ item }}-{{ confluence_mode }}.j2"
+    dest="/{{ item }}"
+    owner={{ confluence_user }}
+    group={{ confluence_user }}
+    mode=0644
+  with_items:
     - usr/share/confluence/conf/server.xml
   tags: confluence
 
