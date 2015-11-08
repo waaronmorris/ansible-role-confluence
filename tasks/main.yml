@@ -8,6 +8,7 @@
     home={{ confluence_home }}
     system=yes
     shell=/bin/bash
+  notify: restart confluence
   tags: confluence
 
 - name: prepare files
@@ -19,6 +20,7 @@
     state={{ item.state }}
   with_items:
     - { path: "{{ confluence_catalina }}", owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0755', state: 'directory' }
+  notify: restart confluence
   tags: confluence
 
 - name: download package
@@ -26,12 +28,14 @@
     url={{ confluence_url }}
     dest={{ confluence_archive }}
     sha256sum={{ confluence_sha256 }}
+  notify: restart confluence
   tags: confluence
 
 - name: unarchive package
   shell: tar zxvf {{ confluence_archive }} -C {{ confluence_catalina }} --strip-components=1; chown -Rf {{ confluence_user }}:{{ confluence_user }} {{ confluence_catalina }}
   args:
     creates: "{{ confluence_catalina }}/bin/start-confluence.sh"
+  notify: restart confluence
   tags: confluence
 
 - name: copy templates
@@ -45,6 +49,7 @@
     - { template: 'etc/init.d/confluence', owner: 'root', group: 'root', mode: '0755' }
     - { template: 'usr/share/confluence/bin/setenv.sh', owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0644' }
     - { template: 'usr/share/confluence/conf/server.xml', owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0644' }
+  notify: restart confluence
   tags: confluence
 
 - name: enable service
