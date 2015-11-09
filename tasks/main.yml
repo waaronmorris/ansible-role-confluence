@@ -1,6 +1,25 @@
 ---
 # tasks file for confluence
 
+- name: stop service if upgrade
+  service: name=confluence state=stopped
+  when: confluence_upgrade == true
+  notify: restart confluence
+  tags: confluence
+
+- name: remove legacy binary if upgrade
+  file:
+    path={{ item.path }}
+    owner={{ item.owner }}
+    group={{ item.group }}
+    mode={{ item.mode }}
+    state={{ item.state }}
+  with_items:
+    - { path: "{{ confluence_catalina }}", owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0755', state: 'absent' }
+  when: confluence_upgrade == true
+  notify: restart confluence
+  tags: confluence
+
 - name: create system user
   user:
     name={{ confluence_user }}
