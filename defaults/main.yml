@@ -2,6 +2,8 @@
 # defaults file for confluence
 
 confluence_archive: /tmp/atlassian-confluence-5.8.15.tar.gz
+confluence_catalina: /usr/share/confluence
+confluence_home: /var/lib/confluence
 confluence_pass: ahle4Boo
 confluence_proxy_name:
 confluence_scheme:
