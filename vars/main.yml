@@ -1,5 +1,2 @@
 ---
 # vars file for confluence
-
-confluence_catalina: /usr/share/confluence
-confluence_home: /var/lib/confluence
