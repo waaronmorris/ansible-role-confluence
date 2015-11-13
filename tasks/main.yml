@@ -66,8 +66,8 @@
     mode={{ item.mode }}
   with_items:
     - { src: 'etc/init.d/confluence.j2', dest: '/etc/init.d/confluence', owner: 'root', group: 'root', mode: '0755' }
-    - { src: 'usr/share/confluence/bin/setenv.sh.j2', dest: "/{{ confluence_catalina }}/bin/setenv.sh", owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0644' }
-    - { src: 'usr/share/confluence/conf/server.xml.j2', dest: "/{{ confluence_catalina }}/conf/server.xml", owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0644' }
+    - { src: 'usr/share/confluence/bin/setenv.sh.j2', dest: "{{ confluence_catalina }}/bin/setenv.sh", owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0644' }
+    - { src: 'usr/share/confluence/conf/server.xml.j2', dest: "{{ confluence_catalina }}/conf/server.xml", owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0644' }
   notify: restart confluence
   tags: confluence
 
