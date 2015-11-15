@@ -1,56 +1,139 @@
-Confluence
-==========
+Ansible Role for Confluence
+===========================
 
-[![Build
-Status](https://travis-ci.org/pantarei/ansible-role-confluence.svg?branch=master)](https://travis-ci.org/pantarei/ansible-role-confluence)
-[![GitHub
-tag](https://img.shields.io/github/tag/pantarei/ansible-role-confluence.svg)](https://github.com/pantarei/ansible-role-confluence)
-[![GitHub
-license](https://img.shields.io/github/license/pantarei/ansible-role-confluence.svg)](https://github.com/pantarei/ansible-role-confluence)
+[![Build Status](https://travis-ci.org/pantarei/ansible-role-confluence.svg?branch=master)](https://travis-ci.org/pantarei/ansible-role-confluence)
+[![GitHub tag](https://img.shields.io/github/tag/pantarei/ansible-role-confluence.svg)](https://github.com/pantarei/ansible-role-confluence)
+[![GitHub license](https://img.shields.io/github/license/pantarei/ansible-role-confluence.svg)](https://github.com/pantarei/ansible-role-confluence/blob/master/LICENSE)
+[![Ansible Role](https://img.shields.io/ansible/role/5990.svg)](https://galaxy.ansible.com/detail#/role/5990)
 
-Ansible Role for Confluence Installation.
+Ansible Role for Atlassian Confluence Installation.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role
-should be mentioned here. For instance, if the role uses the EC2 module,
-it may be a good idea to mention in this section that the boto package
-is required.
+This role require Ansible 1.9 or higher.
+
+This role was designed for Ubuntu Server 14.04 LTS.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here,
-including any variables that are in defaults/main.yml, vars/main.yml,
-and any variables that can/should be set via parameters to the role. Any
-variables that are read from other roles and/or the global scope (ie.
-hostvars, group vars, etc.) should be mentioned here as well.
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">parameter</th>
+<th align="left">required</th>
+<th align="left">default</th>
+<th align="left">choices</th>
+<th align="left">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">confluence_archive</td>
+<td align="left">yes</td>
+<td align="left">/tmp/atlassian-confluence-5.8.16.tar.gz</td>
+<td align="left"></td>
+<td align="left">Download archive filename for cache during (re)install.</td>
+</tr>
+<tr class="even">
+<td align="left">confluence_catalina</td>
+<td align="left">yes</td>
+<td align="left">/usr/share/confluence</td>
+<td align="left"></td>
+<td align="left">Location for the Confluence installation directory.</td>
+</tr>
+<tr class="odd">
+<td align="left">confluence_home</td>
+<td align="left">yes</td>
+<td align="left">/var/lib/confluence</td>
+<td align="left"></td>
+<td align="left">Location for the Confluence home directory.</td>
+</tr>
+<tr class="even">
+<td align="left">confluence_pass</td>
+<td align="left">yes</td>
+<td align="left">ahle4Boo</td>
+<td align="left"></td>
+<td align="left">Password for Confluence system user.</td>
+</tr>
+<tr class="odd">
+<td align="left">confluence_proxy_name</td>
+<td align="left">no</td>
+<td align="left"><code>null</code></td>
+<td align="left"></td>
+<td align="left">Pass value as <code>proxyName</code> to <a href="https://github.com/pantarei/ansible-role-confluence/blob/master/templates/usr/share/confluence/conf/server.xml.j2">template</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">confluence_scheme</td>
+<td align="left">no</td>
+<td align="left"><code>null</code></td>
+<td align="left"><ul>
+<li><code>null</code></li>
+<li>http</li>
+<li>https</li>
+</ul></td>
+<td align="left">Install Confluence in standalone mode if <code>null</code>, or integrating with Apache using HTTP if <code>http</code>, or integrating with Apache using HTTPS if <code>https</code>.</td>
+</tr>
+<tr class="odd">
+<td align="left">confluence_sha256</td>
+<td align="left">yes</td>
+<td align="left">9ccf96838a7b00439b62f4a3f1377cd32a83b3169f5e4ee7bd6c8a244b1ea59b</td>
+<td align="left"></td>
+<td align="left">Download archive sha256 checksum for cache during (re)install.</td>
+</tr>
+<tr class="even">
+<td align="left">confluence_upgrade</td>
+<td align="left">no</td>
+<td align="left"><code>false</code></td>
+<td align="left"><ul>
+<li><code>true</code></li>
+<li><code>false</code></li>
+</ul></td>
+<td align="left">If <code>true</code>, trigger upgrade by stop existing Confluence service, purge existing Confluence installation direcoty before normal tasks.</td>
+</tr>
+<tr class="odd">
+<td align="left">confluence_url</td>
+<td align="left">yes</td>
+<td align="left">https://downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-5.8.16.tar.gz</td>
+<td align="left"></td>
+<td align="left">URL for download archive.</td>
+</tr>
+<tr class="even">
+<td align="left">confluence_user</td>
+<td align="left">yes</td>
+<td align="left">confluence</td>
+<td align="left"></td>
+<td align="left">Username for Confluence system user.</td>
+</tr>
+</tbody>
+</table>
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details
-in regards to parameters that may need to be set for other roles, or
-variables that are used from other roles.
+-   [hswong3i.java](https://galaxy.ansible.com/detail#/role/5971)
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with
-variables passed in as parameters) is always nice for users too:
-
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+        - { role: hswong3i.java }
+        - { role: hswong3i.confluence, confluence_user: 'confluence', confluence_pass: 'ahle4Boo', confluence_upgrade: 'false' }
 
 License
 -------
 
--   Code released under
-    [MIT](https://github.com/hswong3i/ansible-role-confluence/blob/master/LICENSE)
--   Docs released under [CC BY
-    4.0](http://creativecommons.org/licenses/by/4.0/)
+-   Code released under [MIT](https://github.com/hswong3i/ansible-role-confluence/blob/master/LICENSE)
+-   Docs released under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
 
 Author Information
 ------------------
