@@ -42,8 +42,9 @@ echo "Server startup logs are located in $LOGBASEABS/logs/catalina.out"
 CATALINA_OPTS="-XX:-PrintGCDetails -XX:+PrintGCTimeStamps -XX:-PrintTenuringDistribution ${CATALINA_OPTS}"
 CATALINA_OPTS="-Xloggc:$LOGBASEABS/logs/gc-`date +%F_%H-%M-%S`.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=2M ${CATALINA_OPTS}"
 CATALINA_OPTS="-Djava.awt.headless=true ${CATALINA_OPTS}"
-CATALINA_OPTS="-Xms1024m -Xmx1024m -XX:+UseG1GC ${CATALINA_OPTS}"
+CATALINA_OPTS="-Xms{{ confluence_jvm_minimum_memory }} -Xmx{{ confluence_jvm_maximum_memory }} -XX:+UseG1GC ${CATALINA_OPTS}"
 
+CATALINA_OPTS="{{ confluence_jvm_support_recommended_args }} ${CATALINA_OPTS}"
 CATALINA_OPTS="-Dconfluence.home={{ confluence_home }} ${CATALINA_OPTS}"
 
 export CATALINA_OPTS
