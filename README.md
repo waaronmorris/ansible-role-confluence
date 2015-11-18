@@ -51,11 +51,39 @@ Role Variables
 <td align="left">Location for the Confluence installation directory.</td>
 </tr>
 <tr class="odd">
+<td align="left">confluence_connector_port</td>
+<td align="left">yes</td>
+<td align="left">8090</td>
+<td align="left"></td>
+<td align="left">Confluence Apache Tomcat connector port.</td>
+</tr>
+<tr class="even">
 <td align="left">confluence_home</td>
 <td align="left">yes</td>
 <td align="left">/var/lib/confluence</td>
 <td align="left"></td>
 <td align="left">Location for the Confluence home directory.</td>
+</tr>
+<tr class="odd">
+<td align="left">confluence_jvm_maximum_memory</td>
+<td align="left">yes</td>
+<td align="left">1024m</td>
+<td align="left"></td>
+<td align="left">Confluence JVM maximum memory usage.</td>
+</tr>
+<tr class="even">
+<td align="left">confluence_jvm_minimum_memory</td>
+<td align="left">yes</td>
+<td align="left">512m</td>
+<td align="left"></td>
+<td align="left">Confluence JVM minimum memory usage.</td>
+</tr>
+<tr class="odd">
+<td align="left">confluence_jvm_support_recommended_args</td>
+<td align="left">no</td>
+<td align="left">-Datlassian.plugins.enable.wait=300</td>
+<td align="left"></td>
+<td align="left">Atlassian Support recommended JVM arguments.</td>
 </tr>
 <tr class="even">
 <td align="left">confluence_pass</td>
@@ -83,13 +111,20 @@ Role Variables
 <td align="left">Install Confluence in standalone mode if <code>null</code>, or integrating with Apache using HTTP if <code>http</code>, or integrating with Apache using HTTPS if <code>https</code>.</td>
 </tr>
 <tr class="odd">
+<td align="left">confluence_server_port</td>
+<td align="left">yes</td>
+<td align="left">8000</td>
+<td align="left"></td>
+<td align="left">Confluence Apache Tomcat server port.</td>
+</tr>
+<tr class="even">
 <td align="left">confluence_sha256</td>
 <td align="left">yes</td>
 <td align="left">9ccf96838a7b00439b62f4a3f1377cd32a83b3169f5e4ee7bd6c8a244b1ea59b</td>
 <td align="left"></td>
 <td align="left">Download archive sha256 checksum for cache during (re)install.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">confluence_upgrade</td>
 <td align="left">no</td>
 <td align="left"><code>false</code></td>
@@ -99,14 +134,14 @@ Role Variables
 </ul></td>
 <td align="left">If <code>true</code>, trigger upgrade by stop existing Confluence service, purge existing Confluence installation direcoty before normal tasks.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">confluence_url</td>
 <td align="left">yes</td>
 <td align="left">https://downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-5.8.16.tar.gz</td>
 <td align="left"></td>
 <td align="left">URL for download archive.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">confluence_user</td>
 <td align="left">yes</td>
 <td align="left">confluence</td>
