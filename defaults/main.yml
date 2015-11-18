@@ -3,6 +3,7 @@
 
 confluence_archive: /tmp/atlassian-confluence-5.8.16.tar.gz
 confluence_catalina: /usr/share/confluence
+confluence_connector_port: 8090
 confluence_home: /var/lib/confluence
 confluence_jvm_maximum_memory: 1024m
 confluence_jvm_minimum_memory: 512m
@@ -10,6 +11,7 @@ confluence_jvm_support_recommended_args: -Datlassian.plugins.enable.wait=300
 confluence_pass: ahle4Boo
 confluence_proxy_name:
 confluence_scheme:
+confluence_server_port: 8000
 confluence_sha256: 9ccf96838a7b00439b62f4a3f1377cd32a83b3169f5e4ee7bd6c8a244b1ea59b
 confluence_upgrade: false
 confluence_url: https://downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-5.8.16.tar.gz
