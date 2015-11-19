@@ -1,5 +1,5 @@
 ---
-# tasks file for confluence
+# tasks file for hswong3i.confluence
 
 - name: stop service if upgrade
   service: name=confluence state=stopped
