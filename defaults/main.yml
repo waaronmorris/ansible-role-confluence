@@ -1,5 +1,5 @@
 ---
-# defaults file for confluence
+# defaults file for hswong3i.confluence
 
 confluence_archive: /tmp/atlassian-confluence-5.8.16.tar.gz
 confluence_catalina: /usr/share/confluence
