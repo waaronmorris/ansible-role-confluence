@@ -5,7 +5,7 @@
   service: name=confluence state=stopped
   when: confluence_upgrade == true
   notify: restart confluence
-  tags: confluence
+  tags: hswong3i.confluence
 
 - name: remove legacy binary if upgrade
   file:
@@ -18,7 +18,7 @@
     - { path: "{{ confluence_catalina }}", owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0755', state: 'absent' }
   when: confluence_upgrade == true
   notify: restart confluence
-  tags: confluence
+  tags: hswong3i.confluence
 
 - name: create system user
   user:
@@ -28,7 +28,7 @@
     system=yes
     shell=/bin/bash
   notify: restart confluence
-  tags: confluence
+  tags: hswong3i.confluence
 
 - name: prepare files
   file:
@@ -40,7 +40,7 @@
   with_items:
     - { path: "{{ confluence_catalina }}", owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0755', state: 'directory' }
   notify: restart confluence
-  tags: confluence
+  tags: hswong3i.confluence
 
 - name: download package
   get_url:
@@ -48,14 +48,14 @@
     dest={{ confluence_archive }}
     sha256sum={{ confluence_sha256 }}
   notify: restart confluence
-  tags: confluence
+  tags: hswong3i.confluence
 
 - name: unarchive package
   shell: tar zxvf {{ confluence_archive }} -C {{ confluence_catalina }} --strip-components=1; chown -Rf {{ confluence_user }}:{{ confluence_user }} {{ confluence_catalina }}
   args:
     creates: "{{ confluence_catalina }}/bin/start-confluence.sh"
   notify: restart confluence
-  tags: confluence
+  tags: hswong3i.confluence
 
 - name: copy templates
   template:
@@ -69,9 +69,9 @@
     - { src: 'usr/share/confluence/bin/setenv.sh.j2', dest: "{{ confluence_catalina }}/bin/setenv.sh", owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0644' }
     - { src: 'usr/share/confluence/conf/server.xml.j2', dest: "{{ confluence_catalina }}/conf/server.xml", owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0644' }
   notify: restart confluence
-  tags: confluence
+  tags: hswong3i.confluence
 
 - name: enable service
   service: name=confluence enabled=yes
   notify: restart confluence
-  tags: confluence
+  tags: hswong3i.confluence
