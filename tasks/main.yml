@@ -75,3 +75,14 @@
   service: name=confluence enabled=yes
   notify: restart confluence
   tags: hswong3i.confluence
+
+- name: enable incomming connection
+  ufw:
+    to_port={{ item }}
+    proto=tcp
+    rule=allow
+  with_items:
+    - "{{ confluence_connector_port }}"
+    - "{{ confluence_server_port }}"
+  notify: restart confluence
+  tags: hswong3i.confluence
