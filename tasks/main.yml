@@ -20,12 +20,20 @@
   notify: restart confluence
   tags: hswong3i.confluence
 
-- name: create system user
+- name: apt-get install
+  apt:
+    name="{{ item }}"
+    state=latest
+  with_items:
+    - ufw
+  notify: restart confluence
+  tags: hswong3i.confluence
+
+- name: create user
   user:
     name={{ confluence_user }}
     password={{ confluence_pass }}
     home={{ confluence_home }}
-    system=yes
     shell=/bin/bash
   notify: restart confluence
   tags: hswong3i.confluence
