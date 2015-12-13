@@ -9,8 +9,8 @@ confluence_jvm_maximum_memory: 1024m
 confluence_jvm_minimum_memory: 512m
 confluence_jvm_support_recommended_args: -Datlassian.plugins.enable.wait=300
 confluence_pass: ahle4Boo
-confluence_proxy_name:
-confluence_scheme:
+confluence_proxy_name: ~
+confluence_scheme: ~
 confluence_server_port: 8000
 confluence_sha256: 7ec1728d615fd7b4bd8e694fc1fa13db9dd452f293c1948a7fb10d55eec0d1b4
 confluence_upgrade: false
