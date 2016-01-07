@@ -4,6 +4,7 @@
 confluence_archive: /tmp/atlassian-confluence-5.9.3.tar.gz
 confluence_catalina: /usr/share/confluence
 confluence_connector_port: 8090
+confluence_context_path: ~
 confluence_hash_salt: 7a19759dc774f9accbe51540e80e155f31290517417fd6960a27f891877dd272
 confluence_home: /var/lib/confluence
 confluence_jvm_maximum_memory: 1024m
