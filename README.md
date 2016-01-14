@@ -2,9 +2,9 @@ Ansible Role for Confluence
 ===========================
 
 [![Build Status](https://travis-ci.org/pantarei/ansible-role-confluence.svg?branch=master)](https://travis-ci.org/pantarei/ansible-role-confluence)
- [![GitHub tag](https://img.shields.io/github/tag/pantarei/ansible-role-confluence.svg)](https://github.com/pantarei/ansible-role-confluence)
- [![GitHub license](https://img.shields.io/github/license/pantarei/ansible-role-confluence.svg)](https://github.com/pantarei/ansible-role-confluence/blob/master/LICENSE)
- [![Ansible Role](https://img.shields.io/ansible/role/5990.svg)](https://galaxy.ansible.com/detail#/role/5990)
+[![GitHub tag](https://img.shields.io/github/tag/pantarei/ansible-role-confluence.svg)](https://github.com/pantarei/ansible-role-confluence)
+[![GitHub license](https://img.shields.io/github/license/pantarei/ansible-role-confluence.svg)](https://github.com/pantarei/ansible-role-confluence/blob/master/LICENSE)
+[![Ansible Role](https://img.shields.io/ansible/role/5990.svg)](https://galaxy.ansible.com/detail#/role/5990)
 
 Ansible Role for Atlassian Confluence Installation.
 
