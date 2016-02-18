@@ -1,8 +1,9 @@
 ---
 # defaults file for hswong3i.confluence
 
-confluence_archive: /tmp/atlassian-confluence-5.9.5.tar.gz
+confluence_archive: atlassian-confluence-5.9.5.tar.gz
 confluence_catalina: /usr/share/confluence
+confluence_checksum: "sha256:bd4999df5d1bcf9aaee3b3976b10dd3bb44b50c292225b94432aa790ad7d1d13"
 confluence_connector_port: 8090
 confluence_context_path: ~
 confluence_hash_salt: faiw8Wa8iyohx8Bo
@@ -14,7 +15,5 @@ confluence_pass: ahle4Boo
 confluence_proxy_name: ~
 confluence_scheme: ~
 confluence_server_port: 8000
-confluence_sha256: bd4999df5d1bcf9aaee3b3976b10dd3bb44b50c292225b94432aa790ad7d1d13
-confluence_upgrade: false
-confluence_url: https://downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-5.9.5.tar.gz
+confluence_url: "https://downloads.atlassian.com/software/confluence/downloads/{{ confluence_archive }}"
 confluence_user: confluence
