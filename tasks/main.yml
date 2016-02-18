@@ -1,25 +1,6 @@
 ---
 # tasks file for hswong3i.confluence
 
-- name: stop service if upgrade
-  service: name=confluence state=stopped
-  when: confluence_upgrade == true
-  notify: restart confluence
-  tags: hswong3i.confluence
-
-- name: remove legacy binary if upgrade
-  file:
-    path={{ item.path }}
-    owner={{ item.owner }}
-    group={{ item.group }}
-    mode={{ item.mode }}
-    state={{ item.state }}
-  with_items:
-    - { path: "{{ confluence_catalina }}", owner: "{{ confluence_user }}", group: "{{ confluence_user }}", mode: '0755', state: 'absent' }
-  when: confluence_upgrade == true
-  notify: restart confluence
-  tags: hswong3i.confluence
-
 - name: apt-get install
   apt:
     name={{ item.name }}
@@ -53,13 +34,12 @@
 - name: download package
   get_url:
     url={{ confluence_url }}
-    dest={{ confluence_archive }}
-    sha256sum={{ confluence_sha256 }}
-  notify: restart confluence
+    dest="/tmp/{{ confluence_archive }}"
+    checksum={{ confluence_checksum }}
   tags: hswong3i.confluence
 
 - name: unarchive package
-  shell: tar zxvf {{ confluence_archive }} -C {{ confluence_catalina }} --strip-components=1; chown -Rf {{ confluence_user }}:{{ confluence_user }} {{ confluence_catalina }}
+  shell: tar zxvf /tmp/{{ confluence_archive }} -C {{ confluence_catalina }} --strip-components=1; chown -Rf {{ confluence_user }}:{{ confluence_user }} {{ confluence_catalina }}
   args:
     creates: "{{ confluence_catalina }}/bin/start-confluence.sh"
   notify: restart confluence
