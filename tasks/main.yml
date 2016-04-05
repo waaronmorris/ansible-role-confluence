@@ -72,8 +72,8 @@
 
 - name: enable service
   service:
-    name: confluence
-    enabled: yes
+    name: "confluence"
+    enabled: "yes"
   notify: restart confluence
   tags: hswong3i.confluence
 
