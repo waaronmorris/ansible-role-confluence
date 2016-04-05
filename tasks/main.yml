@@ -10,11 +10,20 @@
   notify: restart confluence
   tags: hswong3i.confluence
 
+- name: create group
+  group:
+    name: "{{ confluence_user }}"
+    gid: "{{ confluence_gid | default(None) or omit }}"
+  notify: restart confluence
+  tags: hswong3i.confluence
+
 - name: create user
   user:
     name: "{{ confluence_user }}"
     password: "{{ confluence_pass | password_hash('sha512', confluence_hash_salt) }}"
     home: "{{ confluence_home }}"
+    group: "{{ confluence_user }}"
+    uid: "{{ confluence_uid | default(None) or omit }}"
     shell: "/bin/bash"
   notify: restart confluence
   tags: hswong3i.confluence
