@@ -6,6 +6,7 @@ confluence_catalina: /usr/share/confluence
 confluence_checksum: "sha256:068530c740e4876fd14eb1ddf4bb23d14793147a0257e3c8aeabfa347f4f110e"
 confluence_connector_port: 8090
 confluence_context_path: ~
+confluence_gid: ~
 confluence_hash_salt: faiw8Wa8iyohx8Bo
 confluence_home: /var/lib/confluence
 confluence_jvm_maximum_memory: 1024m
@@ -15,5 +16,6 @@ confluence_pass: ahle4Boo
 confluence_proxy_name: ~
 confluence_scheme: ~
 confluence_server_port: 8000
+confluence_uid: ~
 confluence_url: "https://downloads.atlassian.com/software/confluence/downloads/{{ confluence_archive }}"
 confluence_user: confluence
